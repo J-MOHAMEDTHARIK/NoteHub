@@ -6,6 +6,12 @@ import { AuthProvider } from "./context/AuthContext";
 import App from "./App";
 import "./index.css";
 
+import { registerSW } from "virtual:pwa-register";
+
+registerSW({
+  immediate: true,
+});
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <AuthProvider>

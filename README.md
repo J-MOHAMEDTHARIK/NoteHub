@@ -2,7 +2,21 @@
 
 > 🚀 A modern full-stack Notes Management application built with the MERN Stack to demonstrate secure authentication, CRUD operations, and responsive UI design.
 
-NoteHub is a modern full-stack Notes Management application built with the **MERN Stack**. It provides secure JWT-based authentication, allowing users to create, edit, delete, search, and organize personal notes through a clean, responsive, and intuitive user interface.
+[![Live Demo](https://img.shields.io/badge/🌐%20Live%20Demo-Visit%20Website-00C853?style=for-the-badge&logo=vercel&logoColor=white)](https://note-hub-five.vercel.app)
+
+---
+
+## 🌐 Live Demo
+
+👉 **https://note-hub-five.vercel.app**
+
+---
+
+## 📖 About
+
+**NoteHub** is a modern full-stack Notes Management application built using the **MERN Stack**. It enables users to securely register, log in, and manage their personal notes through a clean, responsive, and intuitive interface.
+
+The application implements **JWT Authentication**, complete **CRUD operations**, **real-time search**, **favorite notes**, and a modern dark-themed UI, making it an excellent portfolio project demonstrating full-stack web development concepts.
 
 ---
 
@@ -10,7 +24,7 @@ NoteHub is a modern full-stack Notes Management application built with the **MER
 
 - 🔐 JWT Authentication & Authorization
 - 👤 Secure User Registration & Login
-- 📝 Create, Read, Update & Delete (CRUD) Notes
+- 📝 Create, Read, Update & Delete Notes
 - 🔍 Real-time Search Notes
 - ❤️ Favorite / Unfavorite Notes
 - 📄 View Full Note
@@ -19,10 +33,15 @@ NoteHub is a modern full-stack Notes Management application built with the **MER
 - 🌙 Modern Dark UI
 - 🔔 Beautiful Toast Notifications
 - ☁️ MongoDB Atlas Database
+- ⚡ Fast API using Express.js
 
 ---
 
 ## 🖼️ Screenshots
+
+### Login Page
+
+> _(Add login screenshot here)_
 
 ### Home Page
 
@@ -57,6 +76,8 @@ NoteHub is a modern full-stack Notes Management application built with the **MER
 - GitHub
 - VS Code
 - Postman
+- Render
+- Vercel
 
 ---
 
@@ -96,15 +117,15 @@ NoteHub
 
 ---
 
-## 🚀 Getting Started
+# 🚀 Getting Started
 
-### 1. Clone the Repository
+## 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/NoteHub.git
+git clone https://github.com/J-MOHAMEDTHARIK/NoteHub.git
 ```
 
-### 2. Navigate to the Project
+## 2️⃣ Navigate to the Project
 
 ```bash
 cd NoteHub
@@ -112,7 +133,7 @@ cd NoteHub
 
 ---
 
-## ⚙️ Backend Setup
+# ⚙️ Backend Setup
 
 ```bash
 cd Backend
@@ -120,7 +141,7 @@ npm install
 npm start
 ```
 
-Backend runs on:
+Backend runs at
 
 ```text
 http://localhost:5000
@@ -128,9 +149,9 @@ http://localhost:5000
 
 ---
 
-## 💻 Frontend Setup
+# 💻 Frontend Setup
 
-Open a new terminal.
+Open another terminal.
 
 ```bash
 cd Frontend
@@ -138,7 +159,7 @@ npm install
 npm run dev
 ```
 
-Frontend runs on:
+Frontend runs at
 
 ```text
 http://localhost:5173
@@ -146,7 +167,7 @@ http://localhost:5173
 
 ---
 
-## 🔑 Environment Variables
+# 🔑 Environment Variables
 
 Create a **.env** file inside the **Backend** folder.
 
@@ -160,16 +181,18 @@ JWT_SECRET=your_secret_key
 
 ---
 
-## 📌 REST API
+# 📌 REST API
 
-### Authentication
+## Authentication
 
 | Method | Endpoint             | Description   |
 | ------ | -------------------- | ------------- |
 | POST   | `/api/auth/register` | Register User |
 | POST   | `/api/auth/login`    | Login User    |
 
-### Notes
+---
+
+## Notes
 
 | Method | Endpoint                  | Description     |
 | ------ | ------------------------- | --------------- |
@@ -182,48 +205,77 @@ JWT_SECRET=your_secret_key
 
 ---
 
-## 🎯 Future Improvements
+# 🎯 Future Improvements
 
 - 📤 Share Notes
+- 🔐 Forgot Password (OTP via Email)
 - 📂 Categories & Tags
 - 📌 Pin Notes
 - 🖼️ Image Attachments
 - 📄 Export Notes as PDF
 - 📅 Reminder Notifications
 - 🤖 AI-powered Note Summary
+- 🌙 Light Theme
+- 📱 Progressive Web App (PWA)
 
 ---
 
-## 👨‍💻 Author
+# 🚀 Deployment
 
-### Mohamed Tharik
+### Frontend
 
-🌐 **Portfolio**  
+- **Vercel**
+
+### Backend
+
+- **Render**
+
+### Database
+
+- **MongoDB Atlas**
+
+---
+
+# 👨‍💻 Author
+
+## Mohamed Tharik
+
+### 🌐 Portfolio
+
 https://tharik-portfolio-ecru.vercel.app/
 
-💼 **LinkedIn**  
+### 💼 LinkedIn
+
 https://www.linkedin.com/in/mohamed-tharik--j/
+
+### 🐙 GitHub
+
+https://github.com/J-MOHAMEDTHARIK
 
 ---
 
-## 🤝 Contributing
+# 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome.
 
 If you'd like to contribute:
 
-1. Fork the repository
-2. Create a new branch
+1. Fork this repository
+2. Create a feature branch
 3. Commit your changes
-4. Push to your branch
+4. Push your branch
 5. Open a Pull Request
 
 ---
 
-## ⭐ Support
+# ⭐ Support
 
-If you found this project useful, please consider giving it a ⭐ on GitHub.
+If you found this project helpful, please consider giving it a ⭐ on GitHub.
 
-It motivates me to build more open-source projects.
+It motivates me to build more open-source projects and helps others discover this repository.
 
 ---
+
+## 💙 Thank You for Visiting NoteHub!
+
+If you like this project, don't forget to ⭐ the repository and share it with others.

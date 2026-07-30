@@ -7,11 +7,15 @@ import Navbar from "../components/Navbar";
 import NoteCard from "../components/NoteCard";
 import { confirmDelete } from "../utils/confirmDelete";
 
+import { generateFlashcards } from "../services/aiService";
+
 import { getNotes, deleteNote, toggleFavorite } from "../services/noteService";
 
 function Home() {
   const [notes, setNotes] = useState([]);
   const [search, setSearch] = useState("");
+  const [flashcards, setFlashcards] = useState([]);
+  const [loadingAI, setLoadingAI] = useState(false);
 
   useEffect(() => {
     loadNotes();
@@ -80,6 +84,28 @@ function Home() {
       return b.isFavorite - a.isFavorite;
     });
 
+  const handleGenerateFlashcards = async (note) => {
+    console.log("AI button clicked");
+    console.log(note);
+
+    try {
+      setLoadingAI(true);
+
+      const data = await generateFlashcards(note.content);
+
+      console.log(data);
+
+      setFlashcards(data);
+
+      toast.success("Flashcards generated successfully!");
+    } catch (error) {
+      console.log(error);
+      toast.error("Unable to generate flashcards");
+    } finally {
+      setLoadingAI(false);
+    }
+  };
+
   return (
     <div className="h-screen overflow-y-auto custom-scroll bg-gradient-to-br from-black via-slate-950 to-indigo-950">
       <Navbar />
@@ -131,6 +157,7 @@ function Home() {
                 note={note}
                 onDelete={handleDelete}
                 onFavorite={handleFavorite}
+                onGenerateFlashcards={handleGenerateFlashcards}
               />
             ))}
           </div>

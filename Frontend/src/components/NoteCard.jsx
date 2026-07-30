@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { SquarePen, Trash2, Heart } from "lucide-react";
+import { SquarePen, Trash2, Heart, Bot } from "lucide-react";
 
-function NoteCard({ note, onDelete, onFavorite }) {
+function NoteCard({ note, onDelete, onFavorite, onGenerateFlashcards }) {
   const formatDate = (date) => {
     return new Date(date).toLocaleDateString("en-IN", {
       day: "2-digit",
@@ -24,6 +24,16 @@ function NoteCard({ note, onDelete, onFavorite }) {
             : note.content}
         </p>
       </Link>
+
+      <div className="px-6 pb-4">
+        <button
+          onClick={() => onGenerateFlashcards(note)}
+          className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 py-3 text-white font-medium hover:opacity-90 transition"
+        >
+          <Bot size={18} />
+          Generate AI Flashcards
+        </button>
+      </div>
 
       {/* Footer */}
       <div className="px-6 py-4 border-t border-slate-800 flex items-center justify-between">

@@ -16,7 +16,7 @@ function Home() {
   const navigate = useNavigate();
   const [notes, setNotes] = useState([]);
   const [search, setSearch] = useState("");
-  const [flashcards, setFlashcards] = useState([]);
+
   const [loadingAI, setLoadingAI] = useState(false);
 
   useEffect(() => {
@@ -87,13 +87,17 @@ function Home() {
     });
 
   const handleGenerateFlashcards = async (note) => {
-    console.log("AI button clicked");
-    console.log(note);
+    if (loadingAI) return;
+
+    const loadingToast = toast.loading(" AI is generating flashcards...");
 
     try {
       setLoadingAI(true);
 
       const cards = await generateFlashcards(note.content);
+
+      toast.dismiss(loadingToast);
+      toast.success(" Flashcards generated successfully!");
 
       navigate("/flashcards", {
         state: {
@@ -101,18 +105,15 @@ function Home() {
           title: note.title,
         },
       });
-
-      setFlashcards(data);
-
-      toast.success("Flashcards generated successfully!");
     } catch (error) {
       console.log(error);
+
+      toast.dismiss(loadingToast);
       toast.error("Unable to generate flashcards");
     } finally {
       setLoadingAI(false);
     }
   };
-
   return (
     <div className="h-screen overflow-y-auto custom-scroll bg-gradient-to-br from-black via-slate-950 to-indigo-950">
       <Navbar />
@@ -165,6 +166,7 @@ function Home() {
                 onDelete={handleDelete}
                 onFavorite={handleFavorite}
                 onGenerateFlashcards={handleGenerateFlashcards}
+                loadingAI={loadingAI}
               />
             ))}
           </div>

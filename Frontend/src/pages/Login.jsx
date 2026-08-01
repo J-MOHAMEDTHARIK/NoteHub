@@ -13,6 +13,8 @@ function Login() {
     password: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const { email, password } = formData;
 
   const handleChange = (e) => {
@@ -25,16 +27,27 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (loading) return;
+
+    const loadingToast = toast.loading("Connecting to server...");
+
     try {
+      setLoading(true);
+
       const data = await loginUser(formData);
 
       login(data.token);
 
+      toast.dismiss(loadingToast);
       toast.success("Login successful");
 
       navigate("/home");
     } catch (error) {
+      toast.dismiss(loadingToast);
+
       toast.error(error.response?.data?.message || "Login failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -69,7 +82,8 @@ function Login() {
               value={email}
               onChange={handleChange}
               required
-              className="w-full rounded-xl border border-gray-700 bg-[#1d1d1d] px-4 py-3 text-white placeholder:text-gray-500 outline-none transition-all duration-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/30"
+              disabled={loading}
+              className="w-full rounded-xl border border-gray-700 bg-[#1d1d1d] px-4 py-3 text-white placeholder:text-gray-500 outline-none transition-all duration-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/30 disabled:opacity-60"
             />
           </div>
 
@@ -84,16 +98,18 @@ function Login() {
               value={password}
               onChange={handleChange}
               required
-              className="w-full rounded-xl border border-gray-700 bg-[#1d1d1d] px-4 py-3 text-white placeholder:text-gray-500 outline-none transition-all duration-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/30"
+              disabled={loading}
+              className="w-full rounded-xl border border-gray-700 bg-[#1d1d1d] px-4 py-3 text-white placeholder:text-gray-500 outline-none transition-all duration-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/30 disabled:opacity-60"
             />
           </div>
 
           {/* Login Button */}
           <button
             type="submit"
-            className="w-full rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 py-3 font-semibold text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-cyan-500/30"
+            disabled={loading}
+            className="w-full rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 py-3 font-semibold text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-cyan-500/30 disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 

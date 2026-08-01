@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import CreateNote from "./pages/CreateNote";
 import EditNote from "./pages/EditNote";
 import ViewNote from "./pages/ViewNote";
+import Flashcards from "./pages/Flashcards";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -50,6 +51,14 @@ function App() {
         element={
           <ProtectedRoute>
             <EditNote />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/flashcards"
+        element={
+          <ProtectedRoute>
+            <Flashcards />
           </ProtectedRoute>
         }
       />

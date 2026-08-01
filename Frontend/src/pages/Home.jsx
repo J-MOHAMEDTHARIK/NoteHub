@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { SquarePen, Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -12,6 +13,7 @@ import { generateFlashcards } from "../services/aiService";
 import { getNotes, deleteNote, toggleFavorite } from "../services/noteService";
 
 function Home() {
+  const navigate = useNavigate();
   const [notes, setNotes] = useState([]);
   const [search, setSearch] = useState("");
   const [flashcards, setFlashcards] = useState([]);
@@ -91,9 +93,14 @@ function Home() {
     try {
       setLoadingAI(true);
 
-      const data = await generateFlashcards(note.content);
+      const cards = await generateFlashcards(note.content);
 
-      console.log(data);
+      navigate("/flashcards", {
+        state: {
+          flashcards: cards,
+          title: note.title,
+        },
+      });
 
       setFlashcards(data);
 

@@ -14,13 +14,21 @@ export const generateFlashcards = async (req, res) => {
     }
 
     const prompt = `
-You are a study assistant.
+You are an expert technical interview coach.
 
-Convert the following note into 10 flashcards.
+Analyze the following study note and generate the 15 most important interview questions that are commonly asked in technical interviews.
 
-Return ONLY valid JSON.
+Rules:
+- Generate exactly 15 flashcards.
+- Focus on the most frequently asked interview questions.
+- Cover all important concepts from the note.
+- Questions should be clear, concise, and interview-oriented.
+- Answers should be short (2-5 lines), accurate, and easy to remember.
+- If the note doesn't contain enough information, infer reasonable interview questions based on the provided topic.
+- Return ONLY valid JSON.
+- Do not include markdown, explanations, or additional text.
 
-Format:
+Output Format:
 
 [
   {
@@ -29,7 +37,7 @@ Format:
   }
 ]
 
-Note:
+Study Note:
 ${content}
 `;
 
